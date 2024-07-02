@@ -145,4 +145,44 @@ function ques11() {
 document.write("<br>");
 document.write("<br>");
 
+//question no 12
+
+document.write("<h3>Question no 12</h3>");
+document.write("<br>");
+document.write("<h4>Result :</h4>");
+document.write("<br>");
+document.write('<button id="btn" onclick="ques12()">Click Me</button>');
+function ques12() {
+
+}
+document.write("<br>");
+document.write("<br>");
+
+//question no 13
+
+document.write("<h3>Question no 13</h3>");
+document.write("<br>");
+document.write("<h4>Result :</h4>");
+document.write("<br>");
+document.write('<button id="btn" onclick="ques13()">Click Me</button>');
+function ques13() {
+
+}
+document.write("<br>");
+document.write("<br>");
+
+//question no 11
+
+document.write("<h3>Question no 14</h3>");
+document.write("<br>");
+document.write("<h4>Result :</h4>");
+document.write("<br>");
+document.write('<button id="btn" onclick="ques14()">Click Me</button>');
+function ques14() {
+
+}
+document.write("<br>");
+document.write("<br>");
+
+
 document.write('<div style="color: blue;background-color: black;"><br><h1>Best OF luck<span style="font-size:50px;">👋</span></h1><br></div>')//&#128075

@@ -11,7 +11,7 @@
     <div class="heading">
       <div class="space"></div>
       <div class="head">
-        <h1>Date  Methods</h1>
+        <h1>Date Methods</h1>
       </div>
       <div class="space"></div>
     </div>
@@ -27,24 +27,242 @@
     </div>
 
     <div class="moiz">
-      <h1>-: If statements :-</h1>
+      <h1>-: Getting the current date and time :-</h1>
       <p class="ali">
-        <!-- 1 -->
+        Your webpage includes a notice telling the user the current local date
+        and time in his <br />
+        particular time zone. But what is the current date and time? Here's how
+        JavaScript finds out. <br />
+        var rightNow = new Date(); <br />
+        The statement above creates something called a Date object. This is what
+        it looks like <br />
+        Note that JavaScript gets this information from the user's computer. It
+        is only as accurate <br />
+        as the computer's date and time settings. For example, if the user just
+        moved from the U.S. <br />
+        West Coast to the U.S. East Coast and hasn't reset the time zone on his
+        computer, the computer <br />
+        will still be on Pacific Time. The Date object, too, will be on Pacific
+        Time. <br />
+        The Date object may resemble a string, but it isn't one. For example,
+        you can't use <br />
+        methods on it like charAt, indexOf, or slice. <br />
+        If you need the Date object to be a string, you can convert it to one
+        the same way you <br />
+        convert a number to a string. <br />
+        var dateString = rightNow.toString(); <br />
+        The code above converts the Date object represented by the variable
+        rightNow to a <br />
+        string and assigns the string to the variable dateString. <br />
+        Most of the time, you'll just want to extract some of the information
+        from the Date object <br />
+        without converting it to a string. <br />
+        I'm going to show you how to extract the individual pieces of the Date
+        object. In this <br />
+        chapter I'll get you started with the first piece. In the next chapter
+        I'll cover the rest. <br />
+        The following code creates a new Date object, assigns it to the variable
+        rightNow, <br />
+        extracts the day of the week, and assigns the day of the week to the
+        variable theDay. <br />
+        1 var rightNow = new Date(); <br />
+        2 var theDay = rightNow.getDay(); <br />
+        In the diagram of the Date object that I showed you above, the day of
+        the week was <br />
+        represented as "Mon." But when you extract the day of the week from the
+        object, it's <br />
+        represented as a number. Days are designated by a number from 0 for
+        Sunday through 6 for <br />
+        Saturday. This means that you'll need a bit of code to convert it back
+        into a day name like <br />
+        "Mon." <br />
+        1 var dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        <br />
+        2 var now = new Date(); <br />
+        3 var theDay = now.getDay(); <br />
+        4 var nameOfToday = dayNames[theDay]; <br />
+        Here's what's going on: <br />
+        1. Creates an array of days starting with "Sun" and assigns it to
+        dayNames. <br />
+        2. Creates a new Date object and assigns it to now. <br />
+        3. Extracts the day of the week as a number and assigns it to theDay.
+        <br />
+        4. Uses the day number as an index to specify the correct array element,
+        i.e. the day name. <br />
       </p>
     </div>
     <div class="moiz">
-      <h1>-: Comparison operators :-</h1>
+      <h1>-: Extracting parts of the date and time :-</h1>
       <p class="ali">
-        <!-- 2 -->
+        Here's a summary of important methods for extracting pieces of the Date
+        object. <br />
+        I covered getDay in the last chapter. Let's look at the rest of the
+        extraction methods. Like <br />
+        getDay, getMonth gives you not the spelled-out name of the month shown
+        in the Date object, <br />
+        but a number. The following code produces a month number ranging from 0
+        for January through <br />
+        11 for December. <br />
+        1 var d = new Date(); <br />
+        2 var currentMonth = d.getMonth(); <br />
+        getDate gives you a number for the day of the month. <br />
+        var dayOfMonth = d.getDate(); <br />
+        getFullYear gives you a 4-digit number for the year. <br />
+        var currYr = d.getFullYear(); <br />
+        getHours gives you a number from 0 through 23 corresponding to midnight
+        through 11 <br />
+        p.m. <br />
+        var currentHrs = d.getHours(); <br />
+        getMinutes gives you a number from 0 through 59. <br />
+        var currMins = d.getMinutes(); <br />
+        getSeconds gives you a number from 0 through 59. <br />
+        var currSecs = d.getSeconds() <br />
+        getMilliseconds gives you a number from 0 through 999. <br />
+        var currMills = d.getMilliseconds(); <br />
+        getTime gives you the number of milliseconds that have elapsed since
+        midnight, Jan. 1, <br />
+        1970. <br />
+        var millsSince = d.getTime(); <br />
+      </p>
+    </div>
+    <div class="moiz">
+      <h1>-: Specifying a date and time :-</h1>
+      <p class="ali">
+        How many days before the U.S. Social Security program goes broke? <br />
+        Let's start with the estimated date. According to the system's trustees,
+        the money will run <br />
+        out in 2035. They didn't pin down an exact date. Let's pick the middle
+        of the year—June 30. <br />
+        Okay, that's the hard part—pinpointing doomsday. Once we have that,
+        constructing a dayby-day countdown is a JavaScript romp. <br />
+        You already know how to do the first step, creating a Date object for
+        the current date and <br />
+        time: <br />
+        1 var today = new Date(); <br />
+        Next, you create a second Date object. But this time you specify the
+        future date, June 30, <br />
+        2035. <br />
+        2 var doomsday = new Date("June 30, 2035"); <br />
+        Notice how the date is specified. It's in quotes. The month is spelled
+        out. There's a <br />
+        comma after the day of the month. The year is expressed in four digits.
+        <br />
+        Next, you extract from both dates the milliseconds that have elapsed
+        since the reference <br />
+        date of January 1, 1970. <br />
+        3 var msToday = today.getTime(); <br />
+        4 var msDoomsday = doomsday.getTime(); <br />
+        You calculate the difference. <br />
+        5 var msDiff = msDoomsday - msToday; <br />
+        Some simple math converts the milliseconds to days. <br />
+        6 var dDiff = msDiff / (1000 * 60 * 60 * 24); <br />
+        The huge number created by the math inside the parentheses converts the
+        milliseconds <br />
+        into seconds (1000), minutes (60), hours (60), and days (24). <br />
+        You want a number that represents whole days, so you round down. The
+        following <br />
+        statement rounds the number of days, which is probably a floating-point
+        number, down to an <br />
+        integer. <br />
+        7 dDiff = Math.floor(dDiff); <br />
+        Here's the whole thing, condensed into something that looks more like
+        production code <br />
+        1 var msDiff = new Date("June 30, 2035").getTime() - new
+        Date().getTime(); <br />
+        2 var daysTillDoom = Mathfloor(msDiff / (1000 * 60 * 60 * 24)); <br />
+        Line 1 subtracts the milliseconds since the reference date of the
+        current moment from the <br />
+        milliseconds since the reference date of June 30, 2035. Line 2 converts
+        the milliseconds to <br />
+        days and rounds down. <br />
+        If the time is important, you can specify that as well. <br />
+        var d = new Date("July 21, 1983 13:25:00"); <br />
+        Note the form used to specify the time: No comma after the date. 24-hour
+        time. Colons <br />
+        separating hours, minutes, and seconds <br />
+      </p>
+    </div>
+    <div class="moiz">
+      <h1>-: Changing elements of a date and time :-</h1>
+      <p class="ali">
+        You can change individual elements of a Date object. Here's a summary:
+        <br />
+        setFullYear sets the year of an existing Date object without changing
+        any other element. <br />
+        1 var d = new Date(); <br />
+        2 d.setFullYear(2001); <br />
+        Line 1 creates a new Date object for the current moment. Line 2 changes
+        the year of the <br />
+        Date object to 2001, leaving all other elements of the Date object
+        intact. <br />
+        setMonth sets the month of an existing Date object without changing any
+        other element. <br />
+        1 var d = new Date(); <br />
+        2 d.setMonth(11); <br />
+        Line 1 creates a new Date object for the current moment. Line 2 changes
+        the month of the <br />
+        Date object to 11 (December), leaving all other elements of the Date
+        object intact. <br />
+        setDate sets the day of the month of an existing Date object without
+        changing any other <br />
+        element. <br />
+        1 var d = new Date(); <br />
+        2 d.setDate(15); <br />
+        Line 1 creates a new Date object for the current moment. Line 2 changes
+        the date of the <br />
+        Date object to the 15th of the month, leaving all other elements of the
+        Date object intact. <br />
+        setHours sets the hours of an existing Date object without changing any
+        other element. <br />
+        1 var d = new Date(); <br />
+        2 d.setHours(13); <br />
+        Line 1 creates a new Date object for the current moment. Line 2 changes
+        the hours of the <br />
+        Date object to the 13th hour (1 p.m.), leaving all other elements of the
+        Date object intact. <br />
+        setMinutes sets the minutes of an existing Date object without changing
+        any other <br />
+        element. <br />
+        1 var d = new Date(); <br />
+        2 d.setMinutes(05); <br />
+        Line 1 creates a new Date object for the current moment. Line 2 changes
+        the minutes of <br />
+        the Date object to 5 minutes after the hour, leaving all other elements
+        of the Date object intact. <br />
+        setSeconds sets the seconds of an existing Date object without changing
+        any other <br />
+        element. <br />
+        1 var d = new Date(); <br />
+        2 d.setSeconds(55); <br />
+        Line 1 creates a new Date object for the current moment. Line 2 changes
+        the seconds of <br />
+        the Date object to the 55 seconds after the minute, leaving all other
+        elements of the Date object <br />
+        intact. <br />
+        setMilliseconds sets the milliseconds of an existing Date object without
+        changing any <br />
+        other element. <br />
+        1 var d = new Date(); <br />
+        2 d.setMilliseconds(867); <br />
+        Line 1 creates a new Date object for the current moment. Line 2 changes
+        the milliseconds <br />
+        of the Date object to 867 milliseconds after the second, leaving all
+        other elements of the Date <br />
+        object intact. <br />
       </p>
     </div>
     <div class="moiz">
       <h1>Assignment</h1>
       <p class="ali">
-        <object data="./" type="application/pdf" width="100%" height="500px">
+        <object
+          data="./XSZfvC_.pdf"
+          type="application/pdf"
+          width="100%"
+          height="500px"
+        >
           <p>
             Unable to display PDF file.
-            <a href="./chapters9-11-1.pdf">Download</a>
+            <a href="./XSZfvC_.pdf">Download</a>
             instead.
           </p>
         </object>
